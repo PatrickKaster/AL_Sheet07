@@ -79,7 +79,14 @@ Generating all possible sequences of L is equivalent to finding all permutations
 \begin{problem}[Assignment 47]
 \end{problem}
 \begin{solution}
-Done, needs further explanation $1-(N \cdot (1-p)^L)$
+\begin{align*}
+	Pr[\mbox{"a specific bit is not flipped"}] & = 1-p \\
+	Pr[\mbox{"L bits are not flipped"}] & = (1-p)^L \\
+	Pr[\mbox{"L bits of N individuals are not flipped"}] & = N \cdot (1-p)^{L \cdot N} \\
+	Pr[\mbox{"all L bits of all N indivduals are flipped"}] & = \\
+	Pr[\mbox{"none are identical to parent"}] & = 1 - (1-p)^{L \cdot N} 
+\end{align*}
+$Q = 1-(1-0.01)^{100 \cdot 20} = 0.99999999813624$
 \end{solution}
 
 \begin{problem}[Assignment 48]
