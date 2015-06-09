@@ -48,14 +48,22 @@
 \begin{problem}[Assignment 44]
 \end{problem}
 \begin{solution}
-Assuming that the rules for the $2$-point-cross-over recombination-operator are analogous to the $1$-point-cross-over recombination-operator there can only be two cases:
-The genome is split at two points. Either:
-\begin{enumerate}
-	\item The part up to point $1$ is taken from parent $A$, the part between point $1$ and point $2$ is taken from parent $B$ and the final part from point $2$ to the end is again taken from parent $A$.
-	\item or the part up to point $1$ is taken from parent $B$, the part between point $1$ and point $2$ is taken from parent $A$ and the final part from point $2$ to the end is again taken from parent $B$.
-\end{enumerate}
-So, regardless of the genome sequence length $L$, there can only be two different offsprings. Thus, the diversity of the population has to be provided by the size of the population or a mutation operator.
+Since the position where the cross-over points may vary, the number of possible offsprings varies with the length $L$ of the genome. We have:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c|c}
+		   L & Offspring \\ 
+	\hline 1 & 2 \\ 
+	2 & 4 \\ 
+	3 & 8 \\ 
+	4 & 14 \\ 
+	5 & 22 \\ 
+	\end{tabular} 
+\caption{number of legal offsprings with varying length of genome}
+\end{table}
 
+This is expressed via the following formula: $Z = L^2-L+2$.
+For $L=64: Z = 4034$.
 \end{solution}
 
 \begin{problem}[Assignment 45]
@@ -82,11 +90,12 @@ Generating all possible sequences of L is equivalent to finding all permutations
 \begin{align*}
 	Pr[\mbox{"a specific bit is not flipped"}] & = 1-p \\
 	Pr[\mbox{"L bits are not flipped"}] & = (1-p)^L \\
-	Pr[\mbox{"L bits of N individuals are not flipped"}] & = N \cdot (1-p)^{L \cdot N} \\
-	Pr[\mbox{"all L bits of all N indivduals are flipped"}] & = \\
-	Pr[\mbox{"none are identical to parent"}] & = 1 - (1-p)^{L \cdot N} 
+	Pr[\mbox{"at least one of L bits is flipped - change in genome"}] & = 1-(1-p)^{L} \\
+	Pr[\mbox{"at least one of L bits in N indivduals are flipped"}] & = \\
+	Pr[\mbox{"none are identical to parent"}] & = (1 - (1-p)^{L})^N \\
+	Q & = (1-(1-0.01)^{100})^{20} \\
+	  & = 0,00011
 \end{align*}
-$Q = 1-(1-0.01)^{100 \cdot 20} = 0.99999999813624$
 \end{solution}
 
 \begin{problem}[Assignment 48]
@@ -98,7 +107,7 @@ $Q = 1-(1-0.01)^{100 \cdot 20} = 0.99999999813624$
 \begin{problem}[Assignment 49]
 \end{problem}
 \begin{solution}
-For an experimental run, we find a mean distance of: $12.8903802695$ and the following distributions for angles and distances
+For an experimental run, we find a mean distance of: $12.8903802695$ and the following distributions for angles and distances. Maximal hamming distance: $1000$. Maximal distance $\sqrt{1000}\eqsim 31.623$.
 \begin{figure}[h!]
 	\centering
 	\begin{subfloatenv}{distance distribution}{fig:distances}
